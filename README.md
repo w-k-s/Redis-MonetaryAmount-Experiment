@@ -103,7 +103,7 @@ fun cacheConfiguration(objectMapper: ObjectMapper): RedisCacheConfiguration {
 }    
 ```
 
-However the serializer from Zalando did not work:
+However the serializer from Zalando did not work because the serializer does not include type info when serializing.
 ```text
 org.springframework.data.redis.serializer.SerializationException: Could not write JSON: Type id handling not implemented for type javax.money.CurrencyUnit (by serializer of type org.zalando.jackson.datatype.money.CurrencyUnitSerializer)
 
@@ -117,6 +117,6 @@ Caused by: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Type i
 	... 84 more
 ```
 
-
+I can't f**king figure out how to write a typed serializer either!
 
 

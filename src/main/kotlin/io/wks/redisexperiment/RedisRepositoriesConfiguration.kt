@@ -19,35 +19,12 @@ import org.springframework.data.redis.core.mapping.RedisMappingContext
 import org.springframework.data.redis.repository.configuration.EnableRedisRepositories
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer
 import org.springframework.stereotype.Component
-import org.zalando.jackson.datatype.money.MoneyModule
 import java.util.*
 
 
 @Configuration
 @EnableRedisRepositories
 class RedisRepositoriesConfiguration {
-
-    @Bean
-    fun redisTemplate(connectionFactory: RedisConnectionFactory?): RedisTemplate<String, Any>? {
-        val template = RedisTemplate<String, Any>()
-        template.connectionFactory = connectionFactory
-
-        val entitySerializer = GenericJackson2JsonRedisSerializer(objectMapper())
-        template.setDefaultSerializer(entitySerializer)
-        template.valueSerializer = entitySerializer
-        template.hashKeySerializer = entitySerializer
-        template.hashValueSerializer = entitySerializer
-        return template
-    }
-
-    @Bean
-    fun objectMapper(): ObjectMapper {
-        val objectMapper = ObjectMapper()
-        objectMapper.registerModule(Jdk8Module())
-        objectMapper.registerModule(JavaTimeModule())
-        objectMapper.registerModule(MoneyModule())
-        return objectMapper
-    }
 
     @Bean
     fun redisConverter(
