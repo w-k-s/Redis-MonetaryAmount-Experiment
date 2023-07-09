@@ -81,8 +81,8 @@ Caused by: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Cannot
 	...
 ```
 
-The issue here is that FastMoney does not provide a no-arg constructor so Jackson doesn't know how to create an instance of it when serializing.
-To resolve this, a custom serializer is required. Zalando provides a library that contains custom serializers for Java Money types: `org.zalando:jackson-datatype-money`.
+The issue here is that FastMoney does not provide a no-arg constructor so Jackson doesn't know how to create an instance of it when deserializing.
+To resolve this, a custom deserializer is required. Zalando provides a library that contains custom serdes for Java Money types: `org.zalando:jackson-datatype-money`.
 
 ```kotlin
 @Bean
@@ -103,7 +103,7 @@ fun cacheConfiguration(objectMapper: ObjectMapper): RedisCacheConfiguration {
 }    
 ```
 
-However the serializer from Zalando did not work because the serializer does not include type info when serializing.
+However the deserializer from Zalando did not work because the serializer does not include type info when serializing.
 ```text
 org.springframework.data.redis.serializer.SerializationException: Could not write JSON: Type id handling not implemented for type javax.money.CurrencyUnit (by serializer of type org.zalando.jackson.datatype.money.CurrencyUnitSerializer)
 
