@@ -1,26 +1,19 @@
 package io.wks.redisexperiment
 
-import com.fasterxml.jackson.databind.ObjectMapper
-import com.fasterxml.jackson.datatype.jdk8.Jdk8Module
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import org.javamoney.moneta.FastMoney
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.core.convert.converter.Converter
 import org.springframework.data.convert.ReadingConverter
 import org.springframework.data.convert.WritingConverter
-import org.springframework.data.redis.connection.RedisConnectionFactory
-import org.springframework.data.redis.core.RedisTemplate
 import org.springframework.data.redis.core.convert.DefaultRedisTypeMapper
 import org.springframework.data.redis.core.convert.MappingRedisConverter
 import org.springframework.data.redis.core.convert.RedisCustomConversions
 import org.springframework.data.redis.core.convert.ReferenceResolver
 import org.springframework.data.redis.core.mapping.RedisMappingContext
 import org.springframework.data.redis.repository.configuration.EnableRedisRepositories
-import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer
 import org.springframework.stereotype.Component
 import java.util.*
-
 
 @Configuration
 @EnableRedisRepositories

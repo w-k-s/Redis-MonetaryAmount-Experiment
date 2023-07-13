@@ -1,5 +1,7 @@
 package io.wks.redisexperiment
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize
+import com.fasterxml.jackson.databind.annotation.JsonSerialize
 import org.javamoney.moneta.FastMoney
 import org.springframework.data.redis.core.RedisHash
 import java.util.*
